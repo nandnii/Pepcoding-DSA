@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class HeightGT {
+public class Height {
 
   private static class Node {
     int data;
@@ -34,7 +34,12 @@ public class HeightGT {
 
   public static int height(Node node) {
     // write your code here
-    int h = 0;
+
+    // BASE CASE
+    // since we're calculating here height interms of edges so for root node, h will be -1 
+    // incase ques asked to calc height interms of nodes h will be 0 
+    int h = -1; 
+    
     for(Node child: node.children){
         int ch = height(child);
         h = Math.max(h, ch);

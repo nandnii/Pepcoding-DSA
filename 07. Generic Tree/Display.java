@@ -1,28 +1,11 @@
 import java.io.*;
 import java.util.*;
 
-public class DisplayGT {
+public class Display {
 
     private static class Node {
         int data;
         ArrayList<Node> children = new ArrayList< >();
-    }
-
-    // Expectation - d(root) will prime self + children
-    // Faith - d(chilren) knows how to print self & children
-    public static void display(Node node) {
-      // print self + children
-      String str = node.data + " -> ";
-      for (Node child : node.children) {
-        str += child.data + ", ";
-      }
-      str += ".";
-      System.out.println(str);
-
-      // call display chilren
-      for (Node child : node.children) {
-        display(child);
-      }
     }
 
     public static Node construct(int[] arr) {
@@ -47,6 +30,27 @@ public class DisplayGT {
       }
 
       return root;
+    }
+
+    // Expectation - d(root) will prime self + children
+    // Faith - d(children) knows how to print self & children
+    public static void display(Node node) {
+      // print self + children
+      String str = node.data + " -> ";
+      
+      // to iterate through children
+      for (Node child: node.children) {
+        str += child.data + ", ";
+      }
+
+      // mark the end of that line
+      str += "."; 
+      System.out.println(str);
+
+      // call display chilren 
+      for (Node child : node.children) {
+        display(child);
+      }
     }
 
   public static void main(String[] args) throws Exception {

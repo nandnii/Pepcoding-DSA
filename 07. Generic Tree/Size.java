@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class MaximumGT {
+public class Size {
   private static class Node {
     int data;
     ArrayList<Node> children = new ArrayList<>();
@@ -31,19 +31,19 @@ public class MaximumGT {
     return root;
   }
 
-  public static int max(Node node) {
+  public static int size(Node node){
     // write your code here
-    int max_value = Integer.MIN_VALUE;
+
+    int s = 0;
 
     for(Node child: node.children){
-        int cm = max(child);
-        max_value = Math.max(cm, max_value);
+        int cs = size(child);
+        s = s + cs;
     }
+    
+    s = s+1;
 
-    max_value = Math.max(node.data, max_value);
-
-    return max_value;
-
+    return s;
   }
 
   public static void main(String[] args) throws Exception {
@@ -56,8 +56,8 @@ public class MaximumGT {
     }
 
     Node root = construct(arr);
-    int m = max(root);
-    System.out.println(m);
+    int sz = size(root);
+    System.out.println(sz);
     // display(root);
   }
 
