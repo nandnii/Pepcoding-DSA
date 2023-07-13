@@ -117,9 +117,9 @@ public class TraversalLevelOrderLinewiseZZ {
             }
         }
         
-        if(st.size() == 0){  // means that level is over
-            st = cst;         // copy child stack contents to main stack
-            cst = new Stack<>(); // restart cst with new stack
+        if(st.size() == 0){       // means that level is over
+            st = cst;             // copy child stack contents to main stack
+            cst = new Stack<>();  // restart cst with new stack
             level++;
             System.out.println();
         }
