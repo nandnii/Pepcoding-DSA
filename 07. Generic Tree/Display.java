@@ -40,11 +40,11 @@ public class Display {
       
       // to iterate through children
       for (Node child: node.children) {
-        str += child.data + ", ";
+        str = str + child.data + ", ";
       }
 
       // mark the end of that line
-      str += "."; 
+      str = str + "."; 
       System.out.println(str);
 
       // call display chilren 
