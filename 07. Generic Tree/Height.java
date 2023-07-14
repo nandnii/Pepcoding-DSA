@@ -33,8 +33,6 @@ public class Height {
   }
 
   public static int height(Node node) {
-    // write your code here
-
     // BASE CASE
     // since we're calculating here height interms of edges so for root node, h will be -1 
     // incase ques asked to calc height interms of nodes h will be 0 
