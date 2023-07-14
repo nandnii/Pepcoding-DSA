@@ -32,7 +32,7 @@ public class Maximum {
   }
 
   public static int max(Node node) {
-    /// write your code here
+    // initialize max value as value of root node
     int max_value = node.data;
     
     for (Node child: node.children) {
@@ -41,7 +41,6 @@ public class Maximum {
     }
     
     return max_value;
-
   }
 
   public static void main(String[] args) throws Exception {
