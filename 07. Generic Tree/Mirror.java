@@ -141,10 +141,10 @@ public class Mirror {
     }
 
     Node root = construct(arr);
-    System.out.println("Original Tree ==>");
+    System.out.println("Original Tree ========>");
     display(root);
     mirror(root);
-    System.out.println("Mirrored Tree ==>");
+    System.out.println("Mirrored Tree ========>");
     display(root);
   }
 
