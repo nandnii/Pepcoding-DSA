@@ -33,14 +33,12 @@ public class Size {
 
   public static int size(Node node){
     // write your code here
-
     int s = 0;
-
     for(Node child: node.children){
         int cs = size(child);
         s = s + cs;
     }
-    
+    // Add +1 to include node count itself
     s = s+1;
 
     return s;
