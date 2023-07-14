@@ -7,19 +7,6 @@ public class TraversalLevelOrderLinewiseZZ {
     ArrayList<Node> children = new ArrayList<>();
   }
 
-  public static void display(Node node) {
-    String str = node.data + " -> ";
-    for (Node child : node.children) {
-      str += child.data + ", ";
-    }
-    str += ".";
-    System.out.println(str);
-
-    for (Node child : node.children) {
-      display(child);
-    }
-  }
-
   public static Node construct(int[] arr) {
     Node root = null;
 
@@ -44,64 +31,17 @@ public class TraversalLevelOrderLinewiseZZ {
     return root;
   }
 
-  public static int size(Node node) {
-    int s = 0;
-
-    for (Node child : node.children) {
-      s += size(child);
-    }
-    s += 1;
-
-    return s;
-  }
-
-  public static int max(Node node) {
-    int m = Integer.MIN_VALUE;
-
-    for (Node child : node.children) {
-      int cm = max(child);
-      m = Math.max(m, cm);
-    }
-    m = Math.max(m, node.data);
-
-    return m;
-  }
-
-  public static int height(Node node) {
-    int h = -1;
-
-    for (Node child : node.children) {
-      int ch = height(child);
-      h = Math.max(h, ch);
-    }
-    h += 1;
-
-    return h;
-  }
-
-  public static void traversals(Node node){
-    System.out.println("Node Pre " + node.data);
-
-    for(Node child: node.children){
-      System.out.println("Edge Pre " + node.data + "--" + child.data);
-      traversals(child);
-      System.out.println("Edge Post " + node.data + "--" + child.data);
-    }
-
-    System.out.println("Node Post " + node.data);
-  }
-
   public static void levelOrderLinewiseZZ(Node node){
     // write your code here
-    
-    Stack<Node> st = new Stack<>();
-    st.push(node);
+
+    Stack<Node> mst = new Stack<>(); // main stack
+    mst.push(node);
 
     Stack<Node> cst = new Stack<>(); // child stack
     int level = 1;
 
-    while(st.size() > 0){
-        node = st.pop();
+    while(mst.size() > 0){
+        node = mst.pop();
         System.out.print(node.data + " ");
 
         // This if-else loop tells in which order to add children in child stack
@@ -118,9 +58,9 @@ public class TraversalLevelOrderLinewiseZZ {
             }
         }
         
-        if(st.size() == 0){       // means that level is over
-            st = cst;             // copy child stack contents to main stack
-            cst = new Stack<>();  // restart cst with new stack
+        if(mst.size() == 0){       // means that level is over
+            mst = cst;             // copy child stack contents to main stack
+            cst = new Stack<>();  // restart cst with fresh stack
             level++;
             System.out.println();
         }

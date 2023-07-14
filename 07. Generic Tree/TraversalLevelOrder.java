@@ -7,19 +7,6 @@ public class TraversalLevelOrder {
     ArrayList<Node> children = new ArrayList<>();
   }
 
-  public static void display(Node node) {
-    String str = node.data + " -> ";
-    for (Node child : node.children) {
-      str += child.data + ", ";
-    }
-    str += ".";
-    System.out.println(str);
-
-    for (Node child : node.children) {
-      display(child);
-    }
-  }
-
   public static Node construct(int[] arr) {
     Node root = null;
 
@@ -44,68 +31,21 @@ public class TraversalLevelOrder {
     return root;
   }
 
-  public static int size(Node node) {
-    int s = 0;
-
-    for (Node child : node.children) {
-      s += size(child);
-    }
-    s += 1;
-
-    return s;
-  }
-
-  public static int max(Node node) {
-    int m = Integer.MIN_VALUE;
-
-    for (Node child : node.children) {
-      int cm = max(child);
-      m = Math.max(m, cm);
-    }
-    m = Math.max(m, node.data);
-
-    return m;
-  }
-
-  public static int height(Node node) {
-    int h = -1;
-
-    for (Node child : node.children) {
-      int ch = height(child);
-      h = Math.max(h, ch);
-    }
-    h += 1;
-
-    return h;
-  }
-
-  public static void traversals(Node node){
-    System.out.println("Node Pre " + node.data);
-
-    for(Node child: node.children){
-      System.out.println("Edge Pre " + node.data + "--" + child.data);
-      traversals(child);
-      System.out.println("Edge Post " + node.data + "--" + child.data);
-    }
-
-    System.out.println("Node Post " + node.data);
-  }
-
   public static void levelOrder(Node node){
     // write your code here
-    Queue<Node> q = new ArrayDeque<>();
-    q.add(node);
+    Queue<Node> mq = new ArrayDeque<>();
+    mq.add(node);
 
-    while(q.size() > 0){
+    while(mq.size() > 0){
         // STEP 1 - REMOVE
-        node = q.remove();
+        node = mq.remove();
 
         // STEP 2 - PRINT
         System.out.print(node.data + " ");
 
         // STEP 3 - ADD
         for(Node child: node.children){
-            q.add(child);
+            mq.add(child);
         }
     }
 
