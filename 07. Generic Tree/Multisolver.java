@@ -44,21 +44,25 @@ public class Multisolver {
 
     return root;
   }
-  //******************************MULTISOLVER*******************************
+  //****************************** MULTISOLVER *******************************//
 
-  static int size;        //1
+  // STEP 1
+  static int size;        
   static int min;
   static int max;
   static int height;
 
-  public static void multisolver(Node node, int depth) { //3
+  // STEP 3
+  public static void multisolver(Node node, int depth) { 
 
-    size++;  //4
+    // STEP 4
+    size++;
     min = Math.min(min, node.data);
     max = Math.max(max, node.data);
     height = Math.max(height, depth);
 
-    for (Node child : node.children) { //5
+    // STEP 5
+    for (Node child : node.children) {
       multisolver(child, depth + 1);
     }
   }
@@ -75,17 +79,18 @@ public class Multisolver {
 
     Node root = construct(arr);
 
-    size = 0;         //2
+    // STEP 2
+    size = 0;         
     min = Integer.MAX_VALUE;
     max = Integer.MIN_VALUE;
     height = 0;
 
     multisolver(root, 0);
 
-    System.out.println("Size=" + size);
-    System.out.println("Min=" + min);
-    System.out.println("Max=" + max);
-    System.out.println("Height=" + height);
+    System.out.println("Size = " + size);
+    System.out.println("Min = " + min);
+    System.out.println("Max = " + max);
+    System.out.println("Height = " + height);
   }
 
 }
