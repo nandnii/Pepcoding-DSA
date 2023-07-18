@@ -1,8 +1,7 @@
 import java.io.*;
-
 import java.util.*;
 
-public class TraversalPrePost {
+public class TraversalIterativePrePost {
   public static class Node {
     int data;
     Node left;
@@ -18,19 +17,18 @@ public class TraversalPrePost {
   public static class Pair {
     Node node;
     int state;
-
     Pair(Node node, int state) {
       this.node = node;
       this.state = state;
     }
   }
-
+  
   public static Node construct(Integer[] arr) {
     Node root = new Node(arr[0], null, null);
     Pair rtp = new Pair(root, 1);
 
     Stack< Pair> st = new Stack< >();
-    st.push(rtp); 
+    st.push(rtp);
 
     int idx = 0;
     while (st.size() > 0) {
@@ -44,7 +42,6 @@ public class TraversalPrePost {
         } else {
           top.node.left = null;
         }
-
         top.state++;
       } else if (top.state == 2) {
         idx++;
@@ -55,13 +52,11 @@ public class TraversalPrePost {
         } else {
           top.node.right = null;
         }
-
         top.state++;
       } else {
         st.pop();
       }
     }
-
     return root;
   }
 
@@ -69,7 +64,6 @@ public class TraversalPrePost {
     if (node == null) {
       return;
     }
-
     String str = "";
     str += node.left == null ? "." : node.left.data + "";
     str += " <- " + node.data + " -> ";
@@ -80,39 +74,43 @@ public class TraversalPrePost {
     display(node.right);
   }
 
-  public static void traversalPreorder(Node node)
-  {
-    if (node == null)
-    {
-      return;
+  public static void iterativePrePostInTraversal(Node node) {
+    Stack < Pair> st = new Stack< >();
+    Pair rtp = new Pair(node, 1);
+    st.push(rtp);
+    
+    String pre = "";
+    String in = "";
+    String post = "";
+
+    while (st.size() > 0) {
+      Pair top = st.peek();
+      if (top.state == 1) {  //pre, s++, left
+        pre += top.node.data + " ";
+        top.state++;
+        if (top.node.left != null) {
+          Pair lp = new Pair(top.node.left, 1);
+          st.push(lp);
+        }
+      }
+      else if (top.state == 2) { //in, s++, right
+        in += top.node.data + " ";
+        top.state++;
+        if (top.node.right != null) {
+          Pair rp = new Pair(top.node.right, 1);
+          st.push(rp);
+        }
+      }
+      else {        //post, pop
+        post += top.node.data + " ";
+        st.pop();
+      }
     }
-    System.out.print(node.data + " ");          // before recursion -> euler left
-    traversalPreorder(node.left);
-    traversalPreorder(node.right);
-  }
-
-  public static void traversalPostorder(Node node)
-  {
-    if (node == null)
-    {
-      return;
-    }
-    traversalPreorder(node.left);
-    traversalPreorder(node.right);
-    System.out.print(node.data + " ");          // after recursion -> euler right
-  }
-
-  public static void traversalInorder(Node node)
-  {
-    if (node == null) {
-      return;
-    }
-    traversalPreorder(node.left);
-    System.out.print(node.data + " ");          // in between recursion -> euler between
-    traversalPreorder(node.right);
+    System.out.println(pre);
+    System.out.println(in);
+    System.out.println(post);
 
   }
-
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(br.readLine());
@@ -127,12 +125,7 @@ public class TraversalPrePost {
     }
 
     Node root = construct(arr);
-    traversalPreorder(root);
-    System.out.println();
-    traversalPostorder(root);
-    System.out.println();
-    traversalInorder(root);
-
+    iterativePrePostInTraversal(root);
   }
 
 }

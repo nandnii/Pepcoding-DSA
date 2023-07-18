@@ -1,8 +1,7 @@
 import java.io.*;
-
 import java.util.*;
 
-public class TraversalPrePost {
+public class TraversalLevelOrder {
   public static class Node {
     int data;
     Node left;
@@ -29,8 +28,8 @@ public class TraversalPrePost {
     Node root = new Node(arr[0], null, null);
     Pair rtp = new Pair(root, 1);
 
-    Stack< Pair> st = new Stack< >();
-    st.push(rtp); 
+    Stack<Pair> st = new Stack<>();
+    st.push(rtp);
 
     int idx = 0;
     while (st.size() > 0) {
@@ -80,36 +79,30 @@ public class TraversalPrePost {
     display(node.right);
   }
 
-  public static void traversalPreorder(Node node)
-  {
-    if (node == null)
-    {
-      return;
-    }
-    System.out.print(node.data + " ");          // before recursion -> euler left
-    traversalPreorder(node.left);
-    traversalPreorder(node.right);
-  }
+  public static void levelOrder(Node node) {
+    // write your code here
+    Queue<Node> mq = new ArrayDeque<>();
+    mq.add(node);
 
-  public static void traversalPostorder(Node node)
-  {
-    if (node == null)
-    {
-      return;
-    }
-    traversalPreorder(node.left);
-    traversalPreorder(node.right);
-    System.out.print(node.data + " ");          // after recursion -> euler right
-  }
+    while(mq.size() > 0){
+        // STEP 1 - REMOVE 
+        node = mq.remove();
 
-  public static void traversalInorder(Node node)
-  {
-    if (node == null) {
-      return;
+        // STEP 2 - PRINT
+        System.out.print(node.data + " ");
+
+        // STEP 3 - ADD
+        if(node.left != null){
+            mq.add(node.left);
+        }
+
+        if(node.right != null){
+            mq.add(node.right);
+        }
     }
-    traversalPreorder(node.left);
-    System.out.print(node.data + " ");          // in between recursion -> euler between
-    traversalPreorder(node.right);
+
+    System.out.print(".");
+
 
   }
 
@@ -127,12 +120,7 @@ public class TraversalPrePost {
     }
 
     Node root = construct(arr);
-    traversalPreorder(root);
-    System.out.println();
-    traversalPostorder(root);
-    System.out.println();
-    traversalInorder(root);
-
+    levelOrder(root);
   }
 
 }
