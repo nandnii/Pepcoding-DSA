@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Display{
+public class Display2D{
   public static void main (String[]args) throws Exception
   {
     Scanner scn = new Scanner (System.in);
