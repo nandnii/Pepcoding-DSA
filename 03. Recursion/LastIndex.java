@@ -24,7 +24,7 @@ public class LastIndex {
 
         int temp_li = lastIndex(arr, idx+1, x);
 
-        // means x hasn't been found yet
+        // means X hasn't been found yet
         if(temp_li == -1){
             if(x == arr[idx]){
                 return idx;
@@ -34,7 +34,7 @@ public class LastIndex {
             }
         }
 
-        // keep returning last index value again & again if x is found
+        // once last index is found, keep returning that value again & again, no more changes need to be done while coming ahead
         else{
             return temp_li;
         }
