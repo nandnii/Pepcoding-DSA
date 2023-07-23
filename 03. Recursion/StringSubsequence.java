@@ -20,20 +20,21 @@ public class StringSubsequence {
             BaseAns.add("");
             return BaseAns;
         }
-        char ch = str.charAt(0);  // a
-        String ros = str.substring(1);  //bc
-        ArrayList<String> tempAns = getSS(ros);  // [--, -b, -c, bc]
+        
+        char ch = str.charAt(0);             // a
+        String ros = str.substring(1);  // bc
+        ArrayList<String> tempAns = getSS(ros);    // [--, -b, -c, bc]
         
         ArrayList<String> finalAns = new ArrayList<>();
 
         // first is -
-        for(String recursion_string: tempAns){
-            finalAns.add("-" + recursion_string);
+        for(String st: tempAns){        // iterate on all elements of tempAns
+            finalAns.add("-" + st);
         }
 
-        // first is charN
-        for(String recursion_string: tempAns){
-            finalAns.add(ch + recursion_string);
+        // first is character
+        for(String st: tempAns){
+            finalAns.add(ch + st);
         } 
 
         return finalAns;
