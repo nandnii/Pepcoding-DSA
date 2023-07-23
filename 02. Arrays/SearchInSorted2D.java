@@ -19,33 +19,20 @@ public class SearchInSorted2D {
 
         scn.close();
 
-        // for(int i=0; i<n; i++){
-        //     if(arr[i][n-1] < d){    // if last value of row is smaller than d, then move to next row
-        //         break;
-        //     }
-        //     else{               // (arr[i][n-1] <= d)
-        //         for(int j=n-1; j>=0; j++){
-        //             if(arr[i][j] == d){
-        //                 System.out.println(arr[i][j]);
-        //             }
-        //         }
-        //     }
-        // }
-
-
         int i = 0;
-        while(i<n){
-            if(arr[i][n-1] < d){            // if last value of row is smaller than d, then move to next row
-                i++;
+        int j = n-1;
+        
+        while(i<n && j>=0){
+            if(arr[i][j] == d){
+                System.out.println(i);
+                System.out.println(j);
+                return;
             }
-            else{                           // enter else when we get (arr[i][n-1] >= d)
-                for(int j=n-1; j>=0; j--){  // iterate in that row till left to find that element
-                    if(arr[i][j] == d){
-                        System.out.println(i);
-                        System.out.println(j);
-                        return;
-                    }
-                }
+            else if(arr[i][n-1] < d){   // if last value of row is smaller than d
+                i++;                    // then move to next row
+            }
+            else{                       // enter else when we get (arr[i][n-1] >= d) 
+                j--;                    // iterate in that row till left to find that element
             }
         }
 
