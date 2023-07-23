@@ -21,7 +21,7 @@ public class FirstIndex {
     }
 
     public static int firstIndex(int[] arr, int idx, int x){
-        if(idx == arr.length) return -1;
+        if(idx == arr.length) return -1;        // we assume last element is max, we'll start comparing with that
 
         int temp_fi = firstIndex(arr, idx+1, x);
 
