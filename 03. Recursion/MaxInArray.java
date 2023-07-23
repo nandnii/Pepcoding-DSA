@@ -19,7 +19,7 @@ public class MaxInArray {
     }
 
     public static int maxOfArray(int[] arr, int idx){
-        if(idx == arr.length - 1) return arr[idx];      // if assume last element is max, we'll start comparing with that
+        if(idx == arr.length - 1) return arr[idx];      // we assume last element is max, we'll start comparing with that
 
         int temp_max = maxOfArray(arr, idx+1);
 
