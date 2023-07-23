@@ -21,8 +21,8 @@ public class PowerXtoN {
 	// x = x * x^(n-1) 
     if(n==0) return 1;
     
-    int pnm1 = PowerLinear(x, n-1);
-    int pn = x * pnm1;
+    int pnm1 = PowerLinear(x, n-1);     // x to power of n-1
+    int pn = x * pnm1;                  // x to power of n
     return pn;
   }
 
@@ -31,8 +31,8 @@ public class PowerXtoN {
 
 	// x = x^n/2 * x^n/2 
     if(n==0) return 1;
-    int pnb2 = PowerLog(x, n/2); 
-    int pn = pnb2 * pnb2;
+    int pnb2 = PowerLog(x, n/2);        // x to power of n by 2
+    int pn = pnb2 * pnb2;               // x to power of n
 
     if (n%2 == 0){
       return pn;
