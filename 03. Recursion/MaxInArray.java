@@ -7,6 +7,7 @@ public class MaxInArray {
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
         
+        // input in array
         int[] arr = new int[n]; 
         for(int i=0; i<n; i++){
           arr[i] = scn.nextInt();
@@ -18,7 +19,7 @@ public class MaxInArray {
     }
 
     public static int maxOfArray(int[] arr, int idx){
-        if(idx == arr.length - 1) return arr[idx];
+        if(idx == arr.length - 1) return arr[idx];      // if assume last element is max, we'll start comparing with that
 
         int temp_max = maxOfArray(arr, idx+1);
 
