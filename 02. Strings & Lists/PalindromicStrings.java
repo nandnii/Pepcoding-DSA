@@ -37,6 +37,6 @@ public class PalindromicStrings {
         String str = scn.next();
         solution(str);
         scn.close();
-	}
+    }
 
 }
