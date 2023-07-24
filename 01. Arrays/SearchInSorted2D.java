@@ -35,9 +35,7 @@ public class SearchInSorted2D {
                 j--;                    // iterate in that row till left to find that element
             }
         }
-
         System.out.println("Not Found");
-
     }
 
 }
