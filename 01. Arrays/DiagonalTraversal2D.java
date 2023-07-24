@@ -3,8 +3,6 @@ import java.util.*;
 public class DiagonalTraversal2D {
 
     public static void main(String[] args) throws Exception {
-        // write your code here
-
         Scanner scn = new Scanner (System.in);
         int n = scn.nextInt ();
 
@@ -17,6 +15,7 @@ public class DiagonalTraversal2D {
 
         scn.close();
 
+        // k is basically the gap between i & j
         for(int k=0; k<arr.length; k++){
             for(int i=0, j=k; j<arr.length; i++, j++){
                 System.out.println(arr[i][j]);
