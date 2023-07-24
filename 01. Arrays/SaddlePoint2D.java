@@ -17,16 +17,16 @@ public class SaddlePoint2D {
 
         scn.close();
 
-        // SP = min in row but max in column
+        // Saddle Point = min in that row but max in that column
 
         // Start iterating row wise
         for(int i=0; i < n; i++){
 
             // in first row, check j with lowest value
-            int svj = 0;                        // smallest value j = we assume smallest value is in 0th col
+            int svj = 0;                            // smallest value j = we assume smallest value is in 0th col
             for(int j=1; j < n; j++){
-                if(arr[i][j] < arr[i][svj]){    // we get another min in some col of that row
-                    svj = j;                    // update svj with col number
+                if(arr[i][j] < arr[i][svj]){        // we get another min in some col of that row
+                    svj = j;                        // update svj with col number
                 }
             }
 
